@@ -191,7 +191,48 @@
 			<li>L'état, sa modification et le call d'action est disponible à la demande n'importe où dans l'App</li>
 		</ul>
 	</article>
+</section>
 
+<section>
+	<header class="slide">
+		<h1>Vuex - How to ?</h1>
+	</header>
+
+	<article class="slide">
+		<h1>Vuex - Vue d'ensemble</h1>
+
+		<ul>
+			<li>Structurer le Store</li>
+			<li>Modulariser le Store</li>
+			<li>Importation automatique des modules</li>
+			<li>Réinitiliser la state d'un module</li>
+			<li>Réinitiliser la state globale</li>
+			<li>Les plugins Vuex</li>
+		</ul>
+	</article>
+
+	<article class="slide">
+		<h1>Vuex - Structurer</h1>
+
+		<span>Il est recommandé de définir le Store de l'App avant de coder quoique ce soit.</span>
+		<span>Cela permettra de mieux le modulariser et d'avoir une modularisation cohérente avec la portée de l'application</span>
+
+		<ul>
+			<li>Utiliser les actions pour gérer les calls vers les fonctions de services, ou y mettre votre business logic directement si cela vous convient.</li>
+			<li>Les actions sont asynchrones par nature, et retourne une Promise.</li>
+			<li>Les actions ont le droit de retourner de la data ET de l'injecter dans le store.</li>
+			<li>Gardez hors de portée des mutations les tâches lourdes. Les mutations sont synchrones et rapide.</li>
+		</ul>
+	</article>
+
+	<article class="slide">
+		<h1>Vuex - Modularisation</h1>
+
+		<p>Il existe 2 grands paradigm pour modulariser son Store.<br />
+		Le premier consiste à créer un module par Modèle de donnée (le plus simple pour des petits applications, ou pour des actions CRUD sur ces modèles)</p>
+		<p>La seconde méthode consiste à séparer le store par "préoccupations" et de si-besoin découper le module en plus petits modules</p>
+		<p>Dans le 2e cas nous pourrions imaginer <a href="examples/vuex-split-b.html">le cas suivant (voir code source)</a></p>
+	</article>
 </section>
 
 <section>
@@ -219,7 +260,7 @@
 
 		<p>La modularisation dépendra principalement de plusieurs points essentiels, dépendant de la gestion de projet</p>
 		<ul class="delayed-children">
-			<li>Les user-stories, comment souhaitez-vous faire utiliser l'app à l'utilisateur finale</li>
+			<li>Les user-stories, comment souhaitez-vous faire utiliser l'app à l'utilisateur final</li>
 			<li>Les interactions que ce dernier aura avec celle-ci</li>
 			<li>La roadmap du produit, en prenant en compte les futurs fonctionnalités</li>
 			<li>Le temps et l'energie que vous souhaitez y consacrer</li>
@@ -227,26 +268,23 @@
 		</ul>
 	</article>
 
+	<article class="slide">
+		<h1>Modularisation, suite</h1>
 
-
-
+		<p>Il existe plusieurs grand concept d'architecture d'App VueJS</p>
+		<p>Selon vos backgrounds et les connaissances que vous avez déjà, vous allez préférez l'un ou l'autre. Si vous travaillez en équipe concertez-vous et votre managers pour prendre la bonne décision. Et concertez aussi le product manager pour les fonctionnalités actuelles et futur.</p>
+	</article>
 
 	<article class="slide">
-		<h1>Syntax highlighting with PrismJS</h1>
+		<h1>Modularisation - Méthode A</h1>
 
-		<ul>
-			<li>Autoloads core & languages used</li>
-			<li>Load plugins by listing their ids in a <code>data-prism-plugins</code> attribute, on any element (first one will be used).</li>
-			<li>Automatically figures out dependencies & aliases</li>
-			<li>CSS is up to you!</li>
-		</ul>
-		<pre class="language-jsx"><code>var start = new Date().getTime();
-setInterval(function() {
-	React.render(
-		&lt;ExampleApplication elapsed={new Date().getTime() - start} />,
-		document.getElementById('container')
-	);
-}, 50);</code></pre>
+		<p><a href="examples/modularize-method-a.html"> ! Exemple de code ici !</a></p>
+	</article>
+
+	<article class="slide">
+		<h1>Modularisation - Méthode B</h1>
+
+		<p><a href="examples/modularize-method-b.html"> ! Exemple de code ici !</a></p>
 	</article>
 
 	<article class="slide" data-video="https://mavo.io/demos/eshop/video.mp4" style="--url: 'https://mavo.io/demos/eshop'" id="media-plugin">
