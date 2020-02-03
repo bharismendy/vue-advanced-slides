@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<title>Inspire.js: A brief introduction</title>
+	<title>Vue Advanced Formations - Slides</title>
 
 	<link href="inspire.css" rel="stylesheet" />
 	<link href="theme.css" rel="stylesheet" />
@@ -32,8 +32,8 @@
 
 		<ul class="delayed-children">
 			<li>Rappels des bases importantes</li>
-			<li>API, Websocket, Gestion d'erreur</li>
 			<li>Comment modularizer une App Vue</li>
+			<li>API, Websocket, Gestion d'erreur</li>
 			<li>Architecture Avancée du Vuex-Store</li>
 			<li>Translate your Vue App with i18n</li>
 			<li>SEO et pre-hydratation avec SSR</li>
@@ -90,11 +90,29 @@
 	</article>
 
 	<article class="slide">
+		<h1>Emit event</h1>
+
+		<ul>
+			<li>Utile pour passer de la donnée entre un composant enfant et parent</li>
+			<li>Eviter le pattern de double-event-bus (ne pas abuser du $emit)</li>
+			<li>Ne fonctionne que de l'enfant vers le parent</li>
+		</ul>
+	</article>
+
+	<article class="slide">
+		<h1>$emit - reproduction de v-model</h1>
+
+		<h3>Que se cache derrière la directive <code>v-model</code></h3>
+
+		<p><a href="/examples/emit-vmodel.html">Exemple de code ici</a></p>
+	</article>
+
+	<article class="slide">
 		<h1><u>Extends</u> et Mixins</h1>
 
 		<p>Extends permet de faire un composant enfant au composant étendu.<br />
 		Il y a donc un héritage complet du composant parent.</p>
-		<ul>
+		<ul class="delayed-children">
 			<li>L'enfant est prioritaire quand il déclare des propriétés qui sont déjà dans le parent.</li>
 			<li>Les lifecycle-hooks de l'enfant sont d'abord appelé, ensuite ceux du parent.</li>
 		</ul>
@@ -135,29 +153,45 @@
 
 	<article class="slide">
 		<h1>Extends et <u>Mixins</u></h1>
-		<ul>
+		<ul class="delayed-children">
 			<li>Plusieurs mixins peuvent être ajoutés au même composant</li>
 			<li>Les mixins peuvent être partagés entre plusieurs composant</li>
 			<li>Les lifecycle hooks des mixins sont appelés <b>AVANT</b> ceux du composant</li>
+			<li>Les mixins sont principalement utilisé pour partager des methods, computed, directive, formatter entre différente partie de l'app</li>
 		</ul>
 	</article>
-
-	<article class="slide" data-insert="#data-insert"></article>
 
 	<article class="slide">
-		<h1>Incremental display</h1>
+		<h1>Mixins: lifecycle hooks</h1>
+		<p><a href="/examples/mixins.html">Exemple de code ici</a></p>
+	</article>
 
+	<article class="slide">
+		<h1>Les mixins globaux</h1>
 		<ul class="delayed-children">
-			<li>Incremental display of slide contents (just add <code>class="delayed"</code>)</li>
-			<li>Use selector <code>.delayed:not(.current):not(.displayed)</code> to change the style of undisplayed items</li>
-			<li>Use selector <code>.delayed.displayed</code> to change the style of displayed items</li>
-			<li>Use selector <code>.delayed.current</code> to change the style of current items</li>
-			<li>Use <code>class="delayed-children"</code> to apply the <code>delayed</code> class to all of an element’s children</li>
-			<li>
-				Nested delayed items <strong class="delayed">are possible</strong>!
-			</li>
+			<li>Peuvent être inclus sur toute l'application en une seul déclaration</li>
+			<li>Il est déconseillé d'utiliser cette technique ailleurs que dans les plugins</li>
 		</ul>
 	</article>
+
+	<article class="slide">
+		<h1>Providers & Injection</h1>
+		<ul class="delayed-children">
+			<li>Les providers et l'injection qui s'en suit sont utilisés pour partager une fonction ou une donnée non-réactive</li>
+			<li>Contrairement aux mixins globaux, lorsque le providers est global, seuls les composants qui demandent explicitement l'injection reçoivent le contenu.</li>
+		</ul>
+	</article>
+
+	<article class="slide">
+		<h1>Vuex global state</h1>
+		<ul class="delayed-children">
+			<li>Vuex permet de créer un "état" de l'application</li>
+			<li>Vuex permet de "dispatch" des actions globalement, qui auront un impact sur l'état (state)</li>
+			<li>La modification de l'état est toujours synchrone</li>
+			<li>L'état, sa modification et le call d'action est disponible à la demande n'importe où dans l'App</li>
+		</ul>
+	</article>
+
 </section>
 
 <section>
@@ -166,14 +200,36 @@
 	</header>
 
 	<article class="slide" id="overview">
-		<h1>Overview</h1>
+		<h1>Vue d'ensemble</h1>
 
-		<ul>
-			<li>Loaded automatically, use <code>&lt;code class="no-overview"></code> to prevent this.</li>
-			<li>Press <kbd>Ctrl</kbd>+<kbd>H</kbd> (or <kbd>Shift</kbd>+<kbd>H</kbd>) to trigger, <kbd>Esc</kbd> to close.</li>
-			<li class="delayed">Cool, huh? You can press <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>H</kbd> to see all slides</li>
+		<ul class="delayed-children">
+			<li>L'utilisation des plugins est recommandée pour des features que vous êtes susceptible d'inclure dans un autre projet</li>
+			<li></li>
 		</ul>
 	</article>
+</section>
+
+<section>
+	<header class="slide">
+		<h1>Modulariser une app App Vue</h1>
+	</header>
+
+	<article class="slide">
+		<h1>La modularisation ? Comment ?</h1>
+
+		<p>La modularisation dépendra principalement de plusieurs points essentiels, dépendant de la gestion de projet</p>
+		<ul class="delayed-children">
+			<li>Les user-stories, comment souhaitez-vous faire utiliser l'app à l'utilisateur finale</li>
+			<li>Les interactions que ce dernier aura avec celle-ci</li>
+			<li>La roadmap du produit, en prenant en compte les futurs fonctionnalités</li>
+			<li>Le temps et l'energie que vous souhaitez y consacrer</li>
+			<li>La taille de l'équipe actuelle et future</li>
+		</ul>
+	</article>
+
+
+
+
 
 	<article class="slide">
 		<h1>Syntax highlighting with PrismJS</h1>

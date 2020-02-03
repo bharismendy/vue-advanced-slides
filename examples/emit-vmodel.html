@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>Example: Reproduire v-model</title>
+	<link href="../bootstrap.min.css" rel="stylesheet" />
+	<link href="../prism.css" rel="stylesheet" />
+	<script src="../prism.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-6">
+				<h3>MyForm.vue (Parent)</h3>
+				<pre>
+					<code class="language-markup">
+&lt;template>
+	&lt;div class="myform-container">
+		&lt;form class="my-form">
+			&lt;my-input v-model="textValue" />
+			&lt;my-input
+				:value="secondValue"
+				@input="onInputSecondValue"
+			/>
+		&lt;/form>
+	&lt;/div>
+&lt;/template>
+</code>
+<code class="language-js">
+<script>
+import MyInput from './MyInput.vue'
+
+export default {
+	components: {
+		MyInput,
+	},
+
+	data() { return {
+		textValue: '',
+		secondValue: '',
+	}},
+
+	methods: {
+		onInputSecondValue(value) {
+			this.secondValue = value
+		}
+	}
+}
+</script>
+					</code>
+				</pre>
+			</div>
+			<div class="col-6">
+				<h3>MyInput.vue</h3>
+				<pre>
+					<code class="language-markup">
+	&lt;template>
+		&lt;div class="myform-container">
+			&lt;form class="my-form">
+				&lt;my-input v-model="textValue" />
+				&lt;my-input
+					:value="secondValue"
+					@input="onInputSecondValue"
+				/>
+			&lt;/form>
+		&lt;/div>
+	&lt;/template>
+</code>
+	<code class="language-js">
+<script>
+export default {
+
+	props: {
+		value: '',
+	},
+
+	methods: {
+		onInput(event) {
+			ths.$emit('input', event.target.value)
+		}
+	}
+}
+</script>
+</code>
+				</pre>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h3>Resultat:</h3>
+				<pre>
+					<code class="language-markdown">
+Hello created - 1
+Hello created - 2
+Created depuis le composant
+Hello mounted - 3
+Hello mounted - 4
+Mounted depuis le composant</code>
+				</pre>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>Example: mixins</title>
+	<link href="../bootstrap.min.css" rel="stylesheet" />
+	<link href="../prism.css" rel="stylesheet" />
+	<script src="../prism.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-6">
+				<h3>mixins.js</h3>
+				<pre>
+					<code class="language-js">
+export const mixin1 = {
+	created() {
+		console.log('Hello created - 1');
+	}
+}
+
+export const mixin2 = {
+	created() {
+		console.log('Hello created - 2');
+	}
+}
+
+export const mixin3 = {
+	mounted() {
+		console.log('Hello created - 3');
+	}
+}
+
+export const mixin4 = {
+	mounted() {
+		console.log('Hello created - 4');
+	}
+}
+					</code>
+				</pre>
+			</div>
+			<div class="col-6">
+				<h3>OneComponent.vue</h3>
+				<pre>
+					<code class="language-js">
+import {mixin1, mixin2, mixin3, mixin4} from './mixins.js';
+
+export default {
+	mixins: [mixin1, mixin2, mixin3, mixin4],
+
+	created() {
+		console.log('Created depuis le composant);
+	},
+
+	mounted() {
+		console.log(`Mounted depuis le composant`);
+	}
+}
+					</code>
+				</pre>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h3>Resultat:</h3>
+				<pre>
+					<code class="language-markdown">
+Hello created - 1
+Hello created - 2
+Created depuis le composant
+Hello mounted - 3
+Hello mounted - 4
+Mounted depuis le composant</code>
+				</pre>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
