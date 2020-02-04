@@ -294,85 +294,15 @@
 		<h1>Modularisation - Méthode B</h1>
 
 		<p><a href="/examples/modularize-method-b.html">[ Voir l'architecture des fichiers ]</a></p>
-		<p>L'idée est de garder "la même architecture" sur plusieurs niveau, dossier Shared dans ../app/ et dans ../app/user/ par exemple. Cela permet de savoir quoi et ou chercher quelques soit le module.</p>
-	</article>
-
-	<article class="slide" data-video="https://mavo.io/demos/eshop/video.mp4" style="--url: 'https://mavo.io/demos/eshop'" id="media-plugin">
-		<div>
-			<h1>Annotated videos</h1>
-			<ul>
-				<li><code>data-video</code> for URL</li>
-				<li><code>class="annotation"</code> for annotations</li>
-				<li><code>data-time</code> and <code>data-pause</code> on annotations</li>
-			</ul>
-		</div>
-		<span class="annotation top-pointer" style="top: 44%; left: 59.5%; --pointer-left: 4em;" data-time="3000 to 3500" data-pause>Click to dismiss & resume</span>
-		<span class="annotation top-pointer" style="top: 26%; left: 67.1%" data-time="5200 to 5700" data-pause="2000">Auto-resume after 2sec</span>
-	</article>
-
-	<article class="demo slide" id="livedemo">
-		<textarea class="language-html"><p>Live demo!</p></textarea>
-		<textarea class="language-css">
-			p {
-				font-size: 250%;
-				color: #f06;
-			}
-		</textarea>
-	</article>
-
-	<article class="isolated demo slide" id="isolated-livedemo">
-		<textarea class="language-html"><p>Live demo in iframe!</p></textarea>
-		<textarea class="language-css">
-			p {
-				font-size: 250%;
-				color: #f06;
-			}
-		</textarea>
-	</article>
-
-	<article class="slide">
-		<h1>Timer</h1>
 		<ul>
-			<li>Define the talk duration with the attribute <code>data-duration</code> on the <code>body</code>.</li>
-			<li>Timer in the form of a progress bar on the top</li>
-			<li>Style the timer and the end state with the selectors <code>#timer</code> and <code>#timer.end</code> respectively.</li>
-		</ul>
-	</article>
-
-	<article class="slide" data-resolution="1024 768">
-		<h1>Resolution</h1>
-		<ul>
-			<li>Design for a specific resolution, and have slides scale up and down based on the viewport.</li>
-			<li>Define with the attribute <code>data-resolution</code> on the <code>&lt;body></code> for all slides, a grouping element, or individual slides (like this one!).</li>
-			<li>Try resizing the viewport, note how the slide size adapts!</li>
-		</ul>
-	</article>
-
-	<article class="slide">
-		<h1>Presenter View</h1>
-
-		<ul>
-			<li>Use <code>&lt;p class="presenter-notes"></code> for presenter notes. You need at least one of these to have the plugin loaded.</li>
-			<li>Presenter view with <kbd>Ctrl</kbd><kbd>P</kbd> (or <kbd>Shift</kbd><kbd>P</kbd>)</li>
-			<li>Also timer, upcoming slide</li>
-		</ul>
-	</article>
-
-	<article class="slide" id="slidestyle">
-		<style data-slide>
-			.slide {
-				background: rebeccapurple;
-			}
-		</style>
-		<h1>Slide-specific CSS</h1>
-		<p>You can use the <code>data-slide</code> attribute on <code>&lt;style></code> elements in slides, to only style the current slide or inside sections that include multiple slides to style all of them and nothing else.</p>
-		<p>For example, run <code class="language-js">$('#slidestyle style').sheet.cssRules[0].selectorText</code> in the console to see how the original selector gets changed.</p>
+			<li>Garder "la même architecture" sur plusieurs niveau, dossier Shared dans ../app/ et dans ../app/user/ par exemple.</li>
+			<li></li>
 	</article>
 </section>
 
 <footer class="slide" title="The End">
 	<h1>Thank you!</h1>
-	<p>Get it or contribute at <a href="https://github.com/LeaVerou/inspire.js">github.com/LeaVerou/inspire.js</a></p>
+	<p></p>
 </footer>
 
 <script src="inspire.js"></script>
