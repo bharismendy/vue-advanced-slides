@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>Vuex Split-B</title>
+	<link href="../bootstrap.min.css" rel="stylesheet" />
+	<link href="../prism.css" rel="stylesheet" />
+	<script src="../prism.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Store.js</h2>
+				<pre><code class="language-js">
+import { auth, subModuleB, subModuleC } from './modules'
+
+const store = new Vuex.Store({
+	modules: {
+		auth,
+		subModuleB,
+		subModuleC,
+	}
+})
+
+export default store</code></pre>
+			</div>
+			<div class="col-12">
+					<h2>modules/subModuleA.js</h2>
+					<p>Séparer les fichiers contenant les mutations,actions, getters en different fichier. (<a href="https://github.com/edrcq/vue-advanced-eshop/tree/master/src/store">Exemple de code ici</a>)</p>
+					<pre><code class="language-js">
+import Vue from 'vue'
+import * as UserServices from '@/services/user'
+
+
+export default {
+	namespaced: true,
+
+	state: {
+		user: {},
+	},
+
+	mutations: {
+		user(state, user) {
+			Vue.set(state, 'user', user)
+		}
+	},
+
+	action: {
+		// this is a handmade way to init the module
+		async initModule({ commit, dispatch }) {
+			const authToken = localStorage.getItem('authToken')
+			dispatch('getMyself', authToken)
+			dispatch('authentifiedHydratation', authToken, { root: true })
+		},
+
+		async getMyself({ commit }, authToken) {
+			const user = await UserServices.getMyself(authToken)
+			commit('user', user)
+			return user
+		}
+	}
+}</code></pre>
+				</div>
+		</div>
+	</div>
+</body>
