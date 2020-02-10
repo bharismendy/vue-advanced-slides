@@ -21,7 +21,7 @@
 	<h2>
 		Lean,&nbsp;hackable,&nbsp;extensible front&nbsp;end&nbsp;framework
 	</h2>
-	<p class="attribution">By <a href="http://devloprs.com">Edouard Rucquoy</a> and <a href="https://github.com/LeaVerou/inspire.js/graphs/contributors">contributors</a></p>
+	<p class="attribution">By <a href="http://devloprs.com" target="_blank">Edouard Rucquoy</a></p>
 </header>
 <section>
 	<header class="slide">
@@ -105,7 +105,7 @@
 
 		<h3>Que se cache derrière la directive <code>v-model</code></h3>
 
-		<p><a href="/examples/emit-vmodel.html">Exemple de code ici</a></p>
+		<p><a href="/examples/emit-vmodel.html" target="_blank">Exemple de code ici</a></p>
 	</article>
 
 	<article class="slide">
@@ -164,7 +164,7 @@
 
 	<article class="slide">
 		<h1>Mixins: lifecycle hooks</h1>
-		<p><a href="/examples/mixins.html">Exemple de code ici</a></p>
+		<p><a href="/examples/mixins.html" target="_blank">Exemple de code ici</a></p>
 	</article>
 
 	<article class="slide">
@@ -182,7 +182,7 @@
 			<li>Contrairement aux mixins globaux, lorsque le providers est global, seuls les composants qui demandent explicitement l'injection reçoivent le contenu.</li>
 		</ul>
 		<p>
-			<a href="/examples/providers.html">Exemple de code ici</a><br />
+			<a href="/examples/providers.html" target="_blank">Exemple de code ici</a><br />
 		</p>
 	</article>
 
@@ -244,7 +244,7 @@
 		Le premier consiste à créer un module par Modèle de donnée (le plus simple pour des petits applications, ou pour des actions CRUD sur ces modèles)</p>
 		<p>La seconde méthode consiste à séparer le store par "préoccupation" et de si-besoin découper le module en sous-modules</p>
 		<p>Un module vuex peut aussi représenter une toute petite partie de l'app, un formulaire, une modale...</p>
-		<p>Dans le 2e cas nous pourrions imaginer <a href="examples/vuex-split-b.html">le cas suivant (voir code source)</a></p>
+		<p>Dans le 2e cas nous pourrions imaginer <a href="examples/vuex-split-b.html" target="_blank">le cas suivant (voir code source)</a></p>
 	</article>
 </section>
 
@@ -265,7 +265,7 @@
 	<article class="slide">
 		<h1>Vuex plugins</h1>
 		<h3>WebSocket</h3>
-		<a href="examples/vuex-websocket-plugins.html">Voir l'exemple de code avec WebSocket</a>
+		<a href="examples/vuex-websocket-plugins.html" target="_blank">Voir l'exemple de code avec WebSocket</a>
 	</article>
 </section>
 
@@ -287,7 +287,7 @@
 	<article class="slide">
 		<h1>Gérer les erreurs via Vuex</h1>
 		<h3>Créer un plugin de gestion d'erreur</h3>
-		<a href="examples/vuex-errors-plugin.html">Voir l'exemple de code</a>
+		<a href="examples/vuex-errors-plugin.html" target="_blank">Voir l'exemple de code</a>
 	</article>
 
 </section>
@@ -321,13 +321,13 @@
 		<h1>Modularisation - Méthode A</h1>
 
 		<p>Exemple vu durant la formation (Module OMDB - Intro)</p>
-		<p><a href="https://github.com/edrcq/vue-advanced-intro/tree/master/src/modules/omdb">{ Découvrir la modularisation (A) }</a></p>
+		<p><a href="https://github.com/edrcq/vue-advanced-intro/tree/master/src/modules/omdb" target="_blank">{ Découvrir la modularisation (A) }</a></p>
 	</article>
 
 	<article class="slide">
 		<h1>Modularisation - Méthode B</h1>
 
-		<p><a href="/examples/modularize-method-b.html">[ Voir l'architecture des fichiers ]</a></p>
+		<p><a href="/examples/modularize-method-b.html" target="_blank">[ Voir l'architecture des fichiers ]</a></p>
 		<ul>
 			<li>Garder "la même architecture" sur plusieurs niveau, dossier Shared dans ../app/ et dans ../app/user/ par exemple.</li>
 			<li></li>
@@ -346,8 +346,10 @@
 			<li>Cela permet de pre-injecter les données dans Vue, coté serveur, avant que l'app soit distribuée au client</li>
 			<li>Le serveur fait un premier rendu du code HTML, pour une meilleure indexation dans les moteurs de recherche et un rendu plus rapide coté client.</li>
 		</ul>
+	</article>
 
-		<p class="delayed">2 outil pour le SSR :</p>
+	<article class="slide">
+		<h1>2 outil pour le SSR :</h1>
 
 		<ul class="delayed-children">
 			<li>Directement via la core-library de Vue</li>
@@ -359,9 +361,26 @@
 		<h1>Nuxt - Les indispensables</h1>
 			<p>Quelques points clés à savoir, le reste peut être facilement trouvé dans la doc.</p>
 			<ul class="delayed-children">
-				<li>l'action du Store `nuxtServerInit` est une action callée server-side, très utile pour hydraté le store. <a href="https://nuxtjs.org/guide/vuex-store#the-nuxtserverinit-action">(Doc ici)</a></li>
+				<li>l'action du Store `nuxtServerInit` est une action callée server-side, très utile pour hydraté le store. <a href="https://nuxtjs.org/guide/vuex-store#the-nuxtserverinit-action" target="_blank">(Doc ici)</a></li>
 				<li>Il est possible de générer un site complet en HTML, depuis Nuxt, en hydratant la fonction de génération avec une base de donnée. Si vous avez 1000 produits, vous finissez avec 1000 pages HTML.</li>
 			</ul>
+	</article>
+
+	<article class="slide">
+		<h1>Les boilerplates SSR</h1>
+		<p>
+			Vraiment très utile pour découvrir et démarrer avec le SSR handmade
+		</p>
+		<p>
+			Liens: <br />
+			-> <a href="https://fr.vuejs.org/v2/guide/ssr.html" target="_blank"> La documentation officielle</a><br />
+			-> <a href="https://github.com/vuejs/vue-hackernews-2.0" target="_blank">HackerNews clone built with Vue 2.0, vue-router & vuex, with server-side rendering</a><br />
+			-> <a href="https://github.com/albertchan/vue-ssr-boilerplate" target="_blank">A stripped down version of vue-hackernews-2 for use as a boilerplate.</a><br />
+			-> <a href="https://github.com/antonreshetov/vue-ssr-boilerplate" target="_blank">Vue SSR Boilerplate - Vuex & vue-router, server-side data pre-fetching, docker</a><br />
+			-> <a href="https://github.com/wallstreetcn/vue-ssr-boilerplate" target="_blank">Vue.js Server Side Rendering Boilerplate without Polluting Vuex</a><br />
+			-> <a href="https://www.namecheap.com/blog/production-ready-vue-ssr-in-5-simple-steps/" target="_blank">Un tres bon tutoriel en anglais</a><br />
+		</p>
+
 	</article>
 </section>
 
