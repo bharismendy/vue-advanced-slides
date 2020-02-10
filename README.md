@@ -19,4 +19,11 @@ Ctrl+G : Go to slide...
 (Shift instead of Ctrl works too)
 ```
 
+## Roadmap
+
+- Add more slides and informations
+- Better organisation and summary
+- Make slides system with VueJS
+- ... post your issue
+
 
