@@ -181,6 +181,17 @@
 			<li>Les providers et l'injection qui s'en suit sont utilisés pour partager une fonction ou une donnée non-réactive</li>
 			<li>Contrairement aux mixins globaux, lorsque le providers est global, seuls les composants qui demandent explicitement l'injection reçoivent le contenu.</li>
 		</ul>
+		<p>
+			<a href="/examples/providers.html">Exemple de code ici</a><br />
+		</p>
+	</article>
+
+	<article class="slide">
+		<h1>Providers & Injection + d'infos</h1>
+		<ul class="delayed-children">
+			<li>L'option provide doit être un objet ou une function retournant un objet</li>
+			<li>Si un objet observé(Observable) est providé, il reste réactif</li>
+		</ul>
 	</article>
 
 	<article class="slide">
@@ -320,6 +331,37 @@
 		<ul>
 			<li>Garder "la même architecture" sur plusieurs niveau, dossier Shared dans ../app/ et dans ../app/user/ par exemple.</li>
 			<li></li>
+	</article>
+</section>
+
+<section>
+	<header class="slide">
+		<h1>Server-Side Rendering</h1>
+	</header>
+
+	<article class="slide">
+		<h1>SSR ? à quoi sa sert ?</h1>
+		<p>A quoi ca sert, comment s'en servir ?</p>
+		<ul class="delayed-children">
+			<li>Cela permet de pre-injecter les données dans Vue, coté serveur, avant que l'app soit distribuée au client</li>
+			<li>Le serveur fait un premier rendu du code HTML, pour une meilleure indexation dans les moteurs de recherche et un rendu plus rapide coté client.</li>
+		</ul>
+
+		<p class="delayed">2 outil pour le SSR :</p>
+
+		<ul class="delayed-children">
+			<li>Directement via la core-library de Vue</li>
+			<li>Via Nuxt un puissant framework permettant de faire du SSR facilement et rapidement.</li>
+		</ul>
+	</article>
+
+	<article class="slide">
+		<h1>Nuxt - Les indispensables</h1>
+			<p>Quelques points clés à savoir, le reste peut être facilement trouvé dans la doc.</p>
+			<ul class="delayed-children">
+				<li>l'action du Store `nuxtServerInit` est une action callée server-side, très utile pour hydraté le store. <a href="https://nuxtjs.org/guide/vuex-store#the-nuxtserverinit-action">(Doc ici)</a></li>
+				<li>Il est possible de générer un site complet en HTML, depuis Nuxt, en hydratant la fonction de génération avec une base de donnée. Si vous avez 1000 produits, vous finissez avec 1000 pages HTML.</li>
+			</ul>
 	</article>
 </section>
 

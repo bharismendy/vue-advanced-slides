@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>Example: mixins</title>
+	<link href="../bootstrap.min.css" rel="stylesheet" />
+	<link href="../prism.css" rel="stylesheet" />
+	<script src="../prism.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<h1>Exemple de providers injecté globalement</h1>
+			<div class="col-6">
+				<h3>main.js</h3>
+				<pre>
+<code class="language-js">
+// Entry file - Entry point of Vue App
+import YourSomethingToProvide from './smwhere/YourSomethingToProvide'
+
+new Vue({
+	provide: { YourSomethingToProvide }
+	router,
+	store,
+	render: h => h(App)
+}).$mount('#app')
+</code>
+</pre>
+			</div>
+			<div class="col-6">
+				<h3>/Deep/Nested/Component.js</h3>
+				<pre>
+<code class="language-js">
+export default {
+	inject: ['YourSomethingToProvide'], // use with this.YourSomethingToProvide
+
+	...rest of the component script
+}
+</code></pre>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

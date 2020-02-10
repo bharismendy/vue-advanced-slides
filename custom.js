@@ -13,4 +13,15 @@
 
 			})
 		}
+
+		const testcode = '[data-code]'
+		const itemsCode = $.$(testcode)
+		for (let i in itemsCode) {
+			var markedUrl = (itemsCode[i].getAttribute('data-code'))
+			axios.get(markedUrl).then(res => {
+				const htmlstuff = (res.data)
+				itemsCode[i].insertAdjacentHTML('afterbegin', htmlstuff);
+
+			})
+		}
 	})
