@@ -271,29 +271,6 @@
 
 <section>
 	<header class="slide">
-		<h1>Gestion d'erreurs</h1>
-	</header>
-
-	<article class="slide">
-		<h1>Comment gérer les erreurs</h1>
-
-		<ul class="delayed-children">
-			<li>Une erreur faisant partie intégrante de l'état de l'application, la meilleure solution est d'utiliser le Vuex Store</li>
-			<li>Mais parfois il est préférable de gérer une erreur directement dans le composant, pour les validations d'input et de form, en général</li>
-			<li>Et ensuite comment gérer les erreurs sur les call API</li>
-		</ul>
-	</article>
-
-	<article class="slide">
-		<h1>Gérer les erreurs via Vuex</h1>
-		<h3>Créer un plugin de gestion d'erreur</h3>
-		<a href="examples/vuex-errors-plugin.html" target="_blank">Voir l'exemple de code</a>
-	</article>
-
-</section>
-
-<section>
-	<header class="slide">
 		<h1>Modulariser une App Vue</h1>
 	</header>
 
@@ -318,6 +295,39 @@
 	</article>
 
 	<article class="slide">
+		<h1>Modularisation type S</h1>
+		<span>La modularisation type S permet d'aller vite</span>
+		<ul>
+			<li>On separe les pages des autres composants</li>
+			<li>On a 2 types de composant: dump et smart</li>
+			<li>Le store ne fait qu'un, mais est split en differents modules</li>
+			<li>2 types de module vuex: par objet et par "concern/page"</li>
+		</ul>
+	</article>
+
+	<article class="slide">
+		<h1>Modularisation type S - Pages</h1>
+		<span>Architecture des composants de type "page" ou "views"</span>
+		<img src="assets/s-views-archi.png" />
+	</article>
+
+	<article class="slide">
+		<h1>Composants smarts et dumbs</h1>
+		<ul>
+		<li>Un composant dit "Smart" est un composant qui s'occupe de récupéré la donner dans le store et qui intéragi avec le reste de l'application</li>
+		<br />
+		<li>Le composant smart inclus généralement des "dumb-component" pour gérer l'affichage de l'information</li>
+		<li>Il peut aussi inclure d'autres composants smart</li>
+		</ul>
+	</article>
+
+	<article class="slide">
+		<h1>Modularisation type S - Composants</h1>
+		<span>Utilisez votre propre convention de nomage pour reconnaitre les composants smart et dumb</span>
+		<img src="assets/s-components-archi.png" />
+	</article>
+
+	<article class="slide">
 		<h1>Modularisation - Méthode A</h1>
 
 		<p>Exemple vu durant la formation (Module OMDB - Intro)</p>
@@ -325,13 +335,69 @@
 	</article>
 
 	<article class="slide">
+		<h1>Type A: Import dynamique de module</h1>
+		<img src="assets/code-import-modules.png" />
+
+	</article>
+
+	<article class="slide">
 		<h1>Modularisation - Méthode B</h1>
 
 		<p><a href="/examples/modularize-method-b.html" target="_blank">[ Voir l'architecture des fichiers ]</a></p>
-		<ul>
-			<li>Garder "la même architecture" sur plusieurs niveau, dossier Shared dans ../app/ et dans ../app/user/ par exemple.</li>
-			<li></li>
+
 	</article>
+</section>
+
+
+<section>
+	<header class="slide">
+		<h1>Gestion d'erreurs</h1>
+	</header>
+
+	<article class="slide">
+		<h1>Comment gérer les erreurs</h1>
+
+		<ul class="delayed-children">
+			<li>Une erreur faisant partie intégrante de l'état de l'application, la meilleure solution est d'utiliser le Vuex Store</li>
+			<li>Mais parfois il est préférable de gérer une erreur directement dans le composant, pour les validations d'input et de form, en général</li>
+			<li>Gérer les erreurs HTTP correctement</li>
+		</ul>
+	</article>
+
+	<article class="slide">
+		<h1>Gérer les erreurs via Vuex</h1>
+		<h3>Créer un plugin de gestion d'erreur</h3>
+		<a href="examples/vuex-errors-plugin.html" target="_blank">Voir l'exemple de code</a>
+	</article>
+
+	<article class="slide">
+		<h1>Gérer les erreurs HTTP</h1>
+		<span>> Avec l'exemple de plugin précédent ainsi que la modularisation on peut imaginer que chaque module ait son store et son etat d'erreur.</span>
+		<span>> Lorsqu'on intercepte une erreur, celle-ci est envoyée à l'errorHandler général, si error.response existe (si axios) alors c'est une erreur http.</span>
+		<br />
+		<span>L'erreur peut être gérée directement via axios</span>
+		<span><a href="examples/error-axios.html" target="_blank">Exemple de code ici</a></span>
+	</article>
+
+	<article class="slide">
+		<h1>Gestion d'erreur interne au composant</h1>
+		<span>Parfois il est plus simple de gérer l'erreur directement dans le composant</span>
+		<pre><code class="language-js">
+methods: {
+	formSubmit() {
+		try {
+			this.$store.dispatch('action', payload)
+			...
+		}
+		catch (err) {
+			this.$notify(VueNotificationOptions) // exemple arbitraire
+			this.showErrorAlert = true
+		}
+	}
+}
+		</code></pre>
+	</article>
+
 </section>
 
 <section>
@@ -361,9 +427,52 @@
 		<h1>Nuxt - Les indispensables</h1>
 			<p>Quelques points clés à savoir, le reste peut être facilement trouvé dans la doc.</p>
 			<ul class="delayed-children">
-				<li>l'action du Store `nuxtServerInit` est une action callée server-side, très utile pour hydraté le store. <a href="https://nuxtjs.org/guide/vuex-store#the-nuxtserverinit-action" target="_blank">(Doc ici)</a></li>
+				<li>l'action du Store `nuxtServerInit` est une action callée server-side, très utile pour hydraté le store.</li>
 				<li>Il est possible de générer un site complet en HTML, depuis Nuxt, en hydratant la fonction de génération avec une base de donnée. Si vous avez 1000 produits, vous finissez avec 1000 pages HTML.</li>
 			</ul>
+	</article>
+
+	<article class="slide">
+		<h1>Nuxt: Le context</h1>
+		<span>Cheatsheet du context, utile pour la suite:</span>
+		<pre><code class="language-js">
+function (context) {
+	const {
+		app, store, route,params, query,
+		env, isDev, isHMR, redirect, error
+	} = context
+
+	if (process.server) {
+		const { req, res, beforeNuxtRender } = context
+	}
+	if (process.client) {
+		const { from, nuxtState } = context
+	}
+}
+		</code></pre>
+	</article>
+
+	<article class="slide">
+		<h1>Store Action : nuxtServerInit</h1>
+		<span>Cette action du store est appelée server side, avant tout chose!</span>
+		<span>store/index.js</span>
+		<pre><code class="language-js">
+actions: {
+	nuxtServerInit ({ commit }, nuxtContext) {
+		const { req } = nuxtContext
+		if (req.cookie.userToken) {
+			commit('userToken', req.cookie.userToken)
+		}
+	}
+}
+</code>
+		</pre>
+	</article>
+
+	<article class="slide">
+		<h1>Nuxt: La structure globale</h1>
+		<span>Avec Nuxt vous avez l'avantage de ne pas devoir penser à la structure globalle de l'App</span>
+		<span>Toutes vos pages seront dans <code>/pages</code>, les modules vuex dans <code>/store</code>, etc...</span>
 	</article>
 
 	<article class="slide">

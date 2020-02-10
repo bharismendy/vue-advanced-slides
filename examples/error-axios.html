@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>Example: Error handling with axios</title>
+	<link href="../bootstrap.min.css" rel="stylesheet" />
+	<link href="../prism.css" rel="stylesheet" />
+	<script src="../prism.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-6">
+				<h3>axios-instance-factory.js</h3>
+				<pre>
+					<code class="language-js">
+import httpErrorHandler from './httpErrorHandler'
+
+function axiosInstanceFactory(options) {
+	const instance = axios.createInstance(options)
+
+	instance.interceptors.response.use(function (response) {
+		/* What you need */
+		return response;
+	}, function (error) {
+		/* Error handling here */
+		httpErrorHandler(error)
+		return Promise.reject(error);
+	});
+
+	return instance
+}</code></pre>
+			</div>
+			<div class="col-6">
+				<h3>httpErrorHandler.js</h3>
+				<pre>
+					<code class="language-js">
+import store from './store'
+
+function httpErrorHandler(error) {
+	...work on error information
+
+	store.commit('errors/push', payload)
+	// here the error-vuex-plugin handle it and show a notification to the client or, make something happens
+	// your component can also use the errors array to show related errors
+
+	return ;
+}</code></pre>
+			</div>
+		</div>
+	</div>
+</body>
